@@ -5,7 +5,7 @@ const port = 3000;
 
 app.use(express.json());
 
-// nhận commitment từ PI
+// revice commitment từ PI
 app.post('/commitment', (req, res) => {
   const { commitment } = req.body;
   fs.writeFileSync('./commitment.json', JSON.stringify(commitment));
@@ -13,7 +13,7 @@ app.post('/commitment', (req, res) => {
   res.json({ status: 'success', message: 'Commitment stored' });
 });
 
-//  nhận proof từ PI
+//  proof từ PI
 app.post('/proof', (req, res) => {
   const { proof } = req.body;
   fs.writeFileSync('./proof.json', JSON.stringify(proof));

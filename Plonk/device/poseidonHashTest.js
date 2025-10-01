@@ -30,7 +30,7 @@ async function main() {
   fs.writeFileSync("ID.json", randID);
   fs.writeFileSync("commitment.json", commitment.toString());
   
-  // Gửi commitment đến server theo sơ đồ bước 1.3
+  // send commitment to server of step 1.3
   try {
     console.log('Sending commitment to server...');
     const response = await axios.post('http://192.168.80.114:3000/commitment', {

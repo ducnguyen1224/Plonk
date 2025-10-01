@@ -27,7 +27,7 @@ async function run() {
   publicSignals[1] = nonce;
   publicSignals[2] = commitment;
 
-  // Sử dụng Plonk verification thay vì Groth16
+  // use Plonk verification 
   const res = await snarkjs.plonk.verify(vKey, publicSignals, proof.proof);
 
   if (res === true) {
