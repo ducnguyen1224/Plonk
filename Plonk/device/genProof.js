@@ -5,23 +5,19 @@ const axios = require("axios");
 async function run() {
   console.log('Reading local files...');
   
-  // Đọc ID và commitment từ local theo sơ đồ
+
   const ID = fs.readFileSync("ID.json", "utf8").trim();
   const IDBigInt = BigInt(ID);
   console.log('Using ID:', ID);
 
-  // Đọc commitment từ local
   const commitment = fs.readFileSync("commitment.json", "utf8").trim();
   
-  // Xử lý commitment để loại bỏ ký tự đặc biệt
   let cleanCommitment = commitment;
   
-  // Loại bỏ dấu ngoặc kép nếu có
   if (cleanCommitment.startsWith('"') && cleanCommitment.endsWith('"')) {
     cleanCommitment = cleanCommitment.slice(1, -1);
   }
   
-  // Loại bỏ khoảng trắng và ký tự đặc biệt
   cleanCommitment = cleanCommitment.replace(/[^\d]/g, '');
   
   console.log('Raw commitment:', commitment);
@@ -30,7 +26,6 @@ async function run() {
   const commitmentBigInt = BigInt(cleanCommitment);
   console.log('Using commitment:', cleanCommitment);
 
-  // Lấy nonce từ server theo sơ đồ
   try {
     console.log('Requesting nonce from server...');
     const nonceResponse = await axios.get('http://192.168.80.114:3000/nonce');
@@ -52,7 +47,6 @@ async function run() {
     
     const res = { proof: proof, output: publicSignals[0] };
     
-    // Gửi proof đến server theo sơ đồ
     console.log('Sending proof to server...');
     const proofResponse = await axios.post('http://192.168.80.114:3000/proof', {
       proof: res
