@@ -1,0 +1,19 @@
+{
+  "name": "plonk-device",
+  "version": "1.0.0",
+  "description": "Plonk ZKP Device Code",
+  "main": "poseidonHashTest.js",
+  "scripts": {
+    "activate": "node poseidonHashTest.js",
+    "auth": "node genProof.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "circomlibjs": "^0.1.6",
+    "snarkjs": "^0.7.0",
+    "axios": "^1.6.0"
+  },
+  "keywords": ["plonk", "zkp", "device", "authentication"],
+  "author": "ducnguyen",
+  "license": "MIT"
+}
